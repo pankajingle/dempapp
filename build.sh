@@ -1,0 +1,1 @@
+1 mvn -f dempapp/pom.xml clean package
