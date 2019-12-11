@@ -15,9 +15,7 @@ public class PaymentController {
     public BaseResponse pay(@RequestParam(value = "key") String key, @RequestParam(value = "userId") int userId, @RequestParam(value = "itemId") String itemId) {
         BaseResponse response = new BaseResponse();
 
-        System.out.println("You are in the system");
         if (sharedKey.equalsIgnoreCase(key)) {
-            System.out.println("You are in shared block");
             int user = userId;
             String item = itemId;
 
