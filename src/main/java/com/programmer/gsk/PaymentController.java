@@ -14,7 +14,7 @@ public class PaymentController {
     @RequestMapping(value = "/pay", method = RequestMethod.POST)
     public BaseResponse pay(@RequestParam(value = "key") String key, @RequestParam(value = "userId") int userId, @RequestParam(value = "itemId") String itemId) {
         BaseResponse response = new BaseResponse();
-        System.out.println("Inside the block");
+
         if (sharedKey.equalsIgnoreCase(key)) {
             int user = userId;
             String item = itemId;
