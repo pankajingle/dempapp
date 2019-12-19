@@ -49,7 +49,7 @@ stages:
       # Publish Cobertura or JaCoCo code coverage results from a build
     - task: PublishCodeCoverageResults@1
       inputs:
-        #codeCoverageTool: 'cobertura' # Options: cobertura, jaCoCo
+        codeCoverageTool: 'cobertura' # Options: cobertura, jaCoCo
         summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
         #pathToSources: # Optional
         reportDirectory: $(System.DefaultWorkingDirectory)/coverage
