@@ -35,6 +35,17 @@ stages:
       inputs:
         mavenPomFile: 'pom.xml'
 
+      # Publish code coverage results
+      # Publish Cobertura or JaCoCo code coverage results from a build
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: 'cobertura'
+        summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
+        #pathToSources: # Optional
+        reportDirectory: $(System.DefaultWorkingDirectory)/coverage
+        #additionalCodeCoverageFiles: # Optional
+        #failIfCoverageEmpty: false # Optional
+
     - task: CopyFiles@2
       displayName: 'Copy Files to artifact staging directory'
       inputs:
@@ -44,17 +55,6 @@ stages:
 
     - upload: $(Build.ArtifactStagingDirectory)
       artifact: drop
-
-      # Publish code coverage results
-      # Publish Cobertura or JaCoCo code coverage results from a build
-    - task: PublishCodeCoverageResults@1
-      inputs:
-        codeCoverageTool: 'cobertura' # Options: cobertura, jaCoCo
-        summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
-        #pathToSources: # Optional
-        reportDirectory: $(System.DefaultWorkingDirectory)/coverage
-        #additionalCodeCoverageFiles: # Optional
-        #failIfCoverageEmpty: false # Optional
 
 - stage: Deploy
   displayName: Deploy stage
